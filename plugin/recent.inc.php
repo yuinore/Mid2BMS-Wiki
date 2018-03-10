@@ -79,7 +79,9 @@ function plugin_recent_convert()
 		} else {
 			$r_page = pagename_urlencode($page);
 			$passage = $show_passage ? ' ' . get_passage($time) : '';
-			$items .= ' <li><a href="' . $script . '?' . $r_page . '"' . 
+			#$items .= ' <li><a href="' . $script . '?' . $r_page . '"' . 
+			#	' title="' . $s_page . $passage . '">' . $s_page . '</a></li>' . "\n";
+			$items .= ' <li><a href="/' . $r_page . '"' . 
 				' title="' . $s_page . $passage . '">' . $s_page . '</a></li>' . "\n";
 		}
 	}

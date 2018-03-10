@@ -12,14 +12,14 @@
 // Settings (define before here, if you want)
 
 // Set site identities
-$_IMAGE['skin']['logo']     = 'pukiwiki.png';
+$_IMAGE['skin']['logo']     = 'mid2bms.png';
 $_IMAGE['skin']['favicon']  = ''; // Sample: 'image/favicon.ico';
 
 // SKIN_DEFAULT_DISABLE_TOPICPATH
 //   1 = Show reload URL
 //   0 = Show topicpath
 if (! defined('SKIN_DEFAULT_DISABLE_TOPICPATH'))
-	define('SKIN_DEFAULT_DISABLE_TOPICPATH', 1); // 1, 0
+	define('SKIN_DEFAULT_DISABLE_TOPICPATH', 0); // 1, 0
 
 // Show / Hide navigation bar UI at your choice
 // NOTE: This is not stop their functionalities!
@@ -76,21 +76,38 @@ if (isset($pkwk_dtd)) {
 <?php if ($nofollow || ! $is_read)  { ?> <meta name="robots" content="NOINDEX,NOFOLLOW" /><?php } ?>
 <?php if (PKWK_ALLOW_JAVASCRIPT && isset($javascript)) { ?> <meta http-equiv="Content-Script-Type" content="text/javascript" /><?php } ?>
 
- <title><?php echo $title ?> - <?php echo $page_title ?></title>
+ <title><?php
+
+if ($title == 'FrontPage') {
+  echo $page_title;
+} else {
+  echo $title . ' - ' . $page_title;
+}
+
+?></title>
 
  <link rel="SHORTCUT ICON" href="<?php echo $image['favicon'] ?>" />
- <link rel="stylesheet" type="text/css" media="screen" href="<?php echo SKIN_DIR ?>pukiwiki.css.php?charset=<?php echo $css_charset ?>" charset="<?php echo $css_charset ?>" />
- <link rel="stylesheet" type="text/css" media="print"  href="<?php echo SKIN_DIR ?>pukiwiki.css.php?charset=<?php echo $css_charset ?>&amp;media=print" charset="<?php echo $css_charset ?>" />
+ <link rel="stylesheet" type="text/css" media="screen" href="/<?php echo SKIN_DIR ?>pukiwiki.css.php?charset=<?php echo $css_charset ?>" charset="<?php echo $css_charset ?>" />
+ <link rel="stylesheet" type="text/css" media="print"  href="/<?php echo SKIN_DIR ?>pukiwiki.css.php?charset=<?php echo $css_charset ?>&amp;media=print" charset="<?php echo $css_charset ?>" />
  <link rel="alternate" type="application/rss+xml" title="RSS" href="<?php echo $link['rss'] ?>" /><?php // RSS auto-discovery ?>
 
 <?php echo $head_tag ?>
 </head>
 <body>
+<div id="main_container">
 
 <div id="header">
  <a href="<?php echo $link['top'] ?>"><img id="logo" src="<?php echo IMAGE_DIR . $image['logo'] ?>" width="80" height="80" alt="[PukiWiki]" title="[PukiWiki]" /></a>
 
- <h1 class="title"><?php echo $page ?></h1>
+ <h1 class="title"><?php
+
+if ($title == 'FrontPage') {
+  echo $page_title2;
+} else {
+  echo $page;
+}
+
+?></h1>
 
 <?php if ($is_page) { ?>
  <?php if(SKIN_DEFAULT_DISABLE_TOPICPATH) { ?>
@@ -121,6 +138,7 @@ function _navigator($key, $value = '', $javascript = ''){
 	return TRUE;
 }
 ?>
+<small>
  [ <?php _navigator('top') ?> ] &nbsp;
 
 <?php if ($is_page) { ?>
@@ -138,7 +156,7 @@ function _navigator($key, $value = '', $javascript = ''){
  <?php if ($rw && (bool)ini_get('file_uploads')) { ?>
 	| <?php _navigator('upload') ?>
  <?php } ?>
- | <?php _navigator('reload') ?>
+ <!-- reload -->
  ] &nbsp;
 <?php } ?>
 
@@ -151,8 +169,8 @@ function _navigator($key, $value = '', $javascript = ''){
 	| <?php _navigator('filelist') ?>
  <?php } ?>
  | <?php _navigator('search') ?>
- | <?php _navigator('recent') ?>
- | <?php _navigator('help')   ?>
+ <!-- recent -->
+ <!-- help -->
  <?php if ($enable_login) { ?>
  | <?php _navigator('login') ?>
  <?php } ?>
@@ -161,12 +179,13 @@ function _navigator($key, $value = '', $javascript = ''){
  <?php } ?>
  ]
 <?php } // PKWK_SKIN_SHOW_NAVBAR ?>
+</small>
 </div>
 
 <?php echo $hr ?>
 
 <?php if ($menu !== FALSE) { ?>
-<table border="0" style="width:100%">
+<table border="0" class="layout_table">
  <tr>
   <td class="menubar">
    <div id="menubar"><?php echo $menu ?></div>
@@ -184,7 +203,7 @@ function _navigator($key, $value = '', $javascript = ''){
 <div id="note"><?php echo $notes ?></div>
 <?php } ?>
 
-<?php if ($attaches != '') { ?>
+<?php if ($attaches != '' && false) { ?>
 <div id="attach">
 <?php echo $hr ?>
 <?php echo $attaches ?>
@@ -273,7 +292,7 @@ function _toolbar($key, $x = 20, $y = 20){
 <div id="lastmodified">Last-modified: <?php echo $lastmodified ?></div>
 <?php } ?>
 
-<?php if ($related != '') { ?>
+<?php if ($related != '' && false) { ?>
 <div id="related">Link: <?php echo $related ?></div>
 <?php } ?>
 
@@ -283,5 +302,6 @@ function _toolbar($key, $x = 20, $y = 20){
  Powered by PHP <?php echo PHP_VERSION ?>. HTML convert time: <?php echo elapsedtime() ?> sec.
 </div>
 
+</div>
 </body>
 </html>

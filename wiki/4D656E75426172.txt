@@ -1,3 +1,47 @@
+#author("2018-03-08T02:08:45+09:00","","")
+&edit(MenuBar,noicon){【メニューの編集】};
+
+[[トップページ>FrontPage]] ~
+┣ [[Mid2BMSとは]] ~
+┣ [[How to Contribute]] ~
+┣ [[チュートリアル]] ~
+┃┣  [[曲を作る>チュートリアル/曲を作る]] ~
+┃┣  [[色分け>チュートリアル/色分け]] ~
+┃┣  ''[[Blueモード>チュートリアル/Blueモード]]''&heart; ~
+┃┣  [[Redモード>チュートリアル/Redモード]] ~
+┃┣  [[不要WAV削除>チュートリアル/不要WAV削除]] ~
+┃┣  [[残響の除去>チュートリアル/残響の除去]] ~
+┃┣  [[自動重複定義>チュートリアル/自動重複定義]] ~
+┃┣  [[音量調整>チュートリアル/音量調整]] ~
+┃┣  [[譜面制作>チュートリアル/譜面制作]] ~
+┃┗  [[公開前チェック表>チュートリアル/公開前チェック表]] ~
+┣ [[よくある質問・TIPS>TIPS]] ~
+┃┗ ''[[音切りに失敗したら>TIPS/音切りに失敗したら]]''&heart; ~
+┣ [[リファレンス]] ~
+┃┣ [[Start Page>リファレンス/Start Page]] ~
+┃┣ [1][[Mid2MML>リファレンス/Mid2MML]] ~
+┃┃┗ [[トラック名の確認>リファレンス/Mid2MML#fd75b021]] ~
+┃┣ [2][[WaveSplitter>リファレンス/WaveSplitter]] ~
+┃┣ [2.5][[TailCutPlus>リファレンス/TailCutPlus]] ~
+┃┗ [3][[DupeDef>リファレンス/DupeDef]] ~
+┣ [[用語集]] ~
+┣ [[機能紹介]] ~
+┃┣ [[Analyze MIDI>機能紹介/Analyze MIDIツール]] ~
+┃┗ [[TinyTinyRenamer>機能紹介/TinyTinyRenamer]] ~
+┣ [[他ツール]] ~
+┃┣ [[Anzu BMS Diff Tool>http://yuinore.net/2015/12/difftool/]] ~
+┃┣ [[bms diff tool>http://stairway.sakura.ne.jp/smalltools/minibmsplay/diff.htm]] ~
+┃┣ [[Simamu>http://yuinore.net/2016/12/simamu/]] ~
+┃┗ [[その他便利ツール>他ツール/その他]]&heart; ~
+┣ [[外部リンク集>外部リンク]] ~
+┃┣ ''[[Mid2BMS関連>外部リンク/Mid2BMS関連]]''&heart; ~
+┃┣ [[BMS制作全般>外部リンク/BMS制作全般]] ~
+┃┗ [[BMS全般>外部リンク/BMS全般]] ~
+┗ [[CSSテスト用ページ]] ~
+~
+&heart; ： おすすめページ ~
+----------
+
 #recent(20)
 
 //常に表示されるメニューバーです。

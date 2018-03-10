@@ -1,3 +1,18 @@
+# URL Rewrite
+RewriteEngine On
+
+# 存在するファイル・フォルダはリライトしない
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^FrontPage$ / [R,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+# html ファイルを index2.php に書き換える
+RewriteRule ^(.+)$ index2.php?$1 [L]
+
+#---------------------------------------------
+
 # Apache .htaccess for PukiWiki
 #
 # $Id: .htaccess,v 1.14 2005/04/29 11:51:31 henoheno Exp $

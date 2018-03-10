@@ -20,6 +20,7 @@ function catbody($title, $page, $body)
 
 	global $pkwk_dtd;     // XHTML 1.1, XHTML1.0, HTML 4.01 Transitional...
 	global $page_title;   // Title of this site
+	global $page_title2;
 	global $do_backup;    // Do backup or not
 	global $modifier;     // Site administrator's  web page
 	global $modifierlink; // Site administrator's name
@@ -55,27 +56,28 @@ function catbody($title, $page, $body)
 	}
 
 	// Set $_LINK for skin
-	$_LINK['add']      = "$script?cmd=add&amp;page=$r_page";
-	$_LINK['backup']   = "$script?cmd=backup&amp;page=$r_page";
-	$_LINK['copy']     = "$script?plugin=template&amp;refer=$r_page";
-	$_LINK['diff']     = "$script?cmd=diff&amp;page=$r_page";
-	$_LINK['edit']     = "$script?cmd=edit&amp;page=$r_page";
-	$_LINK['filelist'] = "$script?cmd=filelist";
-	$_LINK['freeze']   = "$script?cmd=freeze&amp;page=$r_page";
-	$_LINK['help']     = "$script?" . pagename_urlencode($help_page);
-	$_LINK['list']     = "$script?cmd=list";
-	$_LINK['new']      = "$script?plugin=newpage&amp;refer=$r_page";
-	$_LINK['rdf']      = "$script?cmd=rss&amp;ver=1.0";
-	$_LINK['recent']   = "$script?" . pagename_urlencode($whatsnew);
+        $script2 = "/";
+	$_LINK['add']      = "$script2?cmd=add&amp;page=$r_page";
+	$_LINK['backup']   = "$script2?cmd=backup&amp;page=$r_page";
+	$_LINK['copy']     = "$script2?plugin=template&amp;refer=$r_page";
+	$_LINK['diff']     = "$script2?cmd=diff&amp;page=$r_page";
+	$_LINK['edit']     = "$script2?cmd=edit&amp;page=$r_page";
+	$_LINK['filelist'] = "$script2?cmd=filelist";
+	$_LINK['freeze']   = "$script2?cmd=freeze&amp;page=$r_page";
+	$_LINK['help']     = "$script2?" . pagename_urlencode($help_page);
+	$_LINK['list']     = "$script2?cmd=list";
+	$_LINK['new']      = "$script2?plugin=newpage&amp;refer=$r_page";
+	$_LINK['rdf']      = "$script2?cmd=rss&amp;ver=1.0";
+	$_LINK['recent']   = "$script2?" . pagename_urlencode($whatsnew);
 	$_LINK['reload']   = $canonical_url;
-	$_LINK['rename']   = "$script?plugin=rename&amp;refer=$r_page";
-	$_LINK['rss']      = "$script?cmd=rss";
-	$_LINK['rss10']    = "$script?cmd=rss&amp;ver=1.0"; // Same as 'rdf'
-	$_LINK['rss20']    = "$script?cmd=rss&amp;ver=2.0";
-	$_LINK['search']   = "$script?cmd=search";
-	$_LINK['top']      = "$script?" . pagename_urlencode($defaultpage);
-	$_LINK['unfreeze'] = "$script?cmd=unfreeze&amp;page=$r_page";
-	$_LINK['upload']   = "$script?plugin=attach&amp;pcmd=upload&amp;page=$r_page";
+	$_LINK['rename']   = "$script2?plugin=rename&amp;refer=$r_page";
+	$_LINK['rss']      = "$script2?cmd=rss";
+	$_LINK['rss10']    = "$script2?cmd=rss&amp;ver=1.0"; // Same as 'rdf'
+	$_LINK['rss20']    = "$script2?cmd=rss&amp;ver=2.0";
+	$_LINK['search']   = "$script2?cmd=search";
+	$_LINK['top']      = "/";
+	$_LINK['unfreeze'] = "$script2?cmd=unfreeze&amp;page=$r_page";
+	$_LINK['upload']   = "$script2?plugin=attach&amp;pcmd=upload&amp;page=$r_page";
 	$login_link = "#LOGIN_ERROR"; // dummy link that is not used
 	switch ($auth_type) {
 		case AUTH_TYPE_FORM:

@@ -609,6 +609,9 @@ function get_script_uri($init_uri = '')
 	global $script_directory_index;
 	static $script;
 
+	#return '/';
+	return 'http://wiki.mid2bms.net/';
+
 	if ($init_uri == '') {
 		// Get
 		if (isset($script)) return $script;

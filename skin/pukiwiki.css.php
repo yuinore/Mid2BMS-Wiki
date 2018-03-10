@@ -31,18 +31,101 @@ if ($media != 'print') $media = 'screen';
 ?>
 @charset "<?php echo $charset ?>";
 
-pre, dl, ol, p, blockquote { line-height:130%; }
+# [CSS]ブラウザの表示領域いっぱいにボーダーを配置するスタイルシートのテクニックいろいろ | コリス
+# http://coliss.com/articles/build-websites/operation/css/css-tutorial-simplified-page-borders.html
+/*
+html::before {
+    content:"";
+    position:fixed;
+    z-index:1000;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    border:50px solid #dad8bb;
+}*/
+
+dl, ol, p, blockquote { line-height:150%; }
+#menubar p { line-height:130%; }
+pre { line-height: 110% }
 
 blockquote { margin-left:32px; }
 
-body,td {
+body, .table_layout td {
 	color:black;
-	background-color:white;
-	margin-left:2%;
-	margin-right:2%;
 	font-size:90%;
-	font-family:verdana, arial, helvetica, Sans-Serif;
+	font-family:
+		Consolas,
+		Arial,
+		"メイリオ",Meiryo,
+		"ＭＳ Ｐゴシック","MS PGothic",
+		"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",
+		Osaka;
 }
+
+body {
+	text-align: left;
+	min-width: 940px;
+}
+
+div#main_container {
+	position: relative;
+	left: -12px;
+	top: 12px;
+	max-width: 860px;
+	margin: auto;
+	margin-bottom: 30px;
+	padding: 24px 24px 24px 24px;
+
+	border-radius: 10px;
+	box-shadow: 6px 6px 10px 0 #8090A0;
+
+	background-color: #F8FCFF;
+	background-image: url();
+}
+
+body {
+	/*
+	background-color:#F0F8FF;
+	background-image:
+		-webkit-gradient(linear, left top, left bottom, from(#C0E0FF), to(#F0F8FF));
+	*/
+	/*
+	background-image: url('http://wiki.mid2bms.net/wiki_background.jpg');
+	background-repeat: repeat;
+	*/
+	background-color: #BBCCDD;
+	background-image:
+		linear-gradient(90deg,
+			rgba(128,192,255,.4) 20%,
+			rgba(192,224,255, 0) 20%,
+			rgba(192,19, 19,  0) 40%,
+			rgba(192,19, 19, .2) 40%,
+			rgba(192,19, 19, .2) 45%,
+			rgba(192,19, 19,  0) 45%),
+		linear-gradient(
+			rgba(128,192,255,.4) 20%,
+			rgba(192,224,255, 0) 20%,
+			rgba(192,19, 19,  0) 40%,
+			rgba(192,19, 19, .2) 40%,
+			rgba(192,19, 19, .2) 45%,
+			rgba(192,19, 19,  0) 45%);
+	background-size: 30px 30px;
+
+	text-align: left;
+}
+
+/*
+@media screen and (max-width: 480px)　{
+
+div#main_container {
+width:4000px;
+background-color:red;
+}
+h1{
+border:100px;
+}
+}*/
 
 a:link {
 <?php	if ($media == 'print') { ?>
@@ -74,36 +157,60 @@ a:hover {
 	color:#215dc6;
 	background-color:#CCDDEE;
 	text-decoration:underline;
+	transition-property: color, background-color;
+	transition-duration: 0.2s;
 }
 
 h1, h2 {
 	font-family:verdana, arial, helvetica, Sans-Serif;
 	color:inherit;
-	background-color:#DDEEFF;
 	padding:.3em;
 	border:0px;
+	border-left:   18px solid #FF99BB;
 	margin:0px 0px .5em 0px;
 }
+
+h1 {
+	background-color:#FFCCDD;
+}
+
+h2 {
+	box-shadow: 2px 2px 3px 1px #CCBBD0;
+	border-radius: 4px;
+	background-color:#FFCCDD;
+	background-image:
+		-webkit-gradient(linear, left top, right top, from(#FFCCDD), to(#FFD9E2));
+}
+
 h3 {
 	font-family:verdana, arial, helvetica, Sans-Serif;
-	border-bottom:  3px solid #DDEEFF;
-	border-top:     1px solid #DDEEFF;
-	border-left:   10px solid #DDEEFF;
-	border-right:   5px solid #DDEEFF;
+	border-left:   36px solid #FFDD99;
 
 	color:inherit;
-	background-color:#FFFFFF;
+	background-color:#FFEECC;
 	padding:.3em;
-	margin:0px 0px .5em 0px;
+	padding-left:  10px;
+	margin:0px 0em .5em 0em;
+
+	box-shadow: 2px 2px 3px 1px #CCCCDD;
+	border-radius: 4px;
+	background-image:
+		-webkit-gradient(linear, left top, right top, from(#FFEECC), to(#FFF2D9));
 }
 h4 {
 	font-family:verdana, arial, helvetica, Sans-Serif;
-	border-left:   18px solid #DDEEFF;
+	border-left:   54px solid #99FFBB;
 
 	color:inherit;
-	background-color:#FFFFFF;
+	background-color:#CCFFDD;
 	padding:.3em;
-	margin:0px 0px .5em 0px;
+        padding-left:  10px;
+	margin:0px 0em .5em 0em;
+
+	box-shadow: 2px 2px 3px 1px #B8D0D0;
+	border-radius: 4px;
+	background-image:
+		-webkit-gradient(linear, left top, right top, from(#CCFFDD), to(#D9FFE2));
 }
 h5, h6 {
 	font-family:verdana, arial, helvetica, Sans-Serif;
@@ -147,34 +254,79 @@ img {
 	vertical-align:middle;
 }
 
-ul {
-	margin-top:.5em;
-	margin-bottom:.5em;
-	line-height:130%;
+div#body img {
+	box-shadow: 2px 2px 3px 1px #CCCCDD;
+	border-radius: 8px;
+	border: 4px #FFFFFF solid;
+	margin: auto;
+	margin-bottom: 10px;
+	display: block;
+	overflow: hidden;
+}
+
+/* https://qiita.com/nobuko012/items/67ff921d2a4cf338e500 */
+a:hover img{
+	opacity:0.6;
+	transition-property: opacity;
+	transition-duration: 0.2s;
+}
+
+ul, ol {
+	/*margin-top:.5em;*/
+	/*margin-bottom:.5em;*/
+	line-height:110%;
 }
 
 em { font-style:italic; }
 
 strong { font-weight:bold; }
 
-thead td.style_td,
-tfoot td.style_td {
-	color:inherit;
-	background-color:#D0D8E0;
-}
-thead th.style_th,
-tfoot th.style_th {
-	color:inherit;
-	background-color:#E0E8F0;
-}
+/* 参考：CSS：角丸のテーブルを作成する方法 */
+/* https://www.nxworld.net/tips/css-border-radius-table.html */
 .style_table {
 	padding:0px;
-	border:0px;
 	margin:auto;
+	margin-bottom:10px;
 	text-align:left;
 	color:inherit;
 	background-color:#ccd5dd;
+
+	border: 1px solid #AAAAAA;
+	border-collapse: separate;
+	border-spacing: 0;
+	border-radius: 4px;
+	overflow: hidden;
+	box-shadow: 2px 2px 3px 1px #CCCCDD;
 }
+/* ###################################### */
+.style_table thead th.style_th,
+.style_table thead td.style_td,
+.style_table tbody th.style_th,
+.style_table tbody td.style_td {
+  border-bottom: 1px solid #AAAAAA;
+}
+.style_table th.style_th + th.style_th,
+.style_table th.style_th + td.style_td,
+.style_table td.style_td + th.style_th,
+.style_table td.style_td + td.style_td {
+  /* theadやtbodyに関係なく左の要素があればボーダー付加 */
+  border-left: 1px solid #AAAAAA;
+}
+.style_table tbody tr:last-child th.style_th,
+.style_table tbody tr:last-child td.style_td {
+  /* tbodyのみ、最後の行であればボーダー除去 */
+  border-bottom: none;
+}
+/* ###################################### */
+.style_table thead td.style_td {
+	color:inherit;
+	background-color:#D0D8E0;
+}
+.style_table thead th.style_th {
+	color:inherit;
+	background-color:#E0E8F0;
+}
+
 .style_th {
 	padding:5px;
 	margin:1px;
@@ -188,6 +340,7 @@ tfoot th.style_th {
 	color:inherit;
 	background-color:#EEF5FF;
 }
+/* ###################################### */
 
 ul.list1 { list-style-type:disc; }
 ul.list2 { list-style-type:circle; }
@@ -227,9 +380,11 @@ div.jumpmenu {
 }
 
 hr.full_hr {
-	border-style:ridge;
-	border-color:#333333;
-	border-width:1px 0px;
+	border-style:solid;
+	border-color:#666688;
+	border-width: 1px;
+	border-radius: 1px;
+	box-shadow: 1px 1px 2px 0px #9999CC;
 }
 hr.note_hr {
 	width:90%;
@@ -240,6 +395,7 @@ hr.note_hr {
 	margin:1em auto 0em auto;
 }
 
+/* line-height 要確認 */
 span.size1 {
 	font-size:xx-small;
 	line-height:130%;
@@ -348,7 +504,7 @@ td.menubar {
 <?php   if ($media == 'print') { ?>
 	display:none;
 <?php   } else { ?>
-	width:9em;
+	width:15em; <?php /* edited (orig : 9em) */ ?>
 	vertical-align:top;
 <?php   } ?>
 }
@@ -357,7 +513,7 @@ div#menubar {
 <?php   if ($media == 'print') { ?>
 	display:none;
 <?php   } else { ?>
-	width:9em;
+	width:15em; <?php /* edited (orig : 9em) */ ?>
 	padding:0px;
 	margin:4px;
 	word-break:break-all;
@@ -371,13 +527,14 @@ div#menubar ul {
 	padding:0px 0px 0px .5em;
 }
 
-div#menubar ul li { line-height:110%; }
-
-div#menubar h4 { font-size:110%; }
+/*
+div#menubar ul li { line-height:130%; }
+div#menubar h4 { font-size:130%; }
+*/
 
 div#body {
 	padding:0px;
-	margin:0px 0px 0px .5em;
+	margin: 16px 4px 4px 4px;
 }
 
 div#note {

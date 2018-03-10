@@ -117,6 +117,14 @@ $line_rules = array(
 	'%%(?!%)((?:(?!%%).)*)%%'	=> '<del>$1</del>',
 	"'''(?!')((?:(?!''').)*)'''"	=> '<em>$1</em>',
 	"''(?!')((?:(?!'').)*)''"	=> '<strong>$1</strong>',
+	#'(https:\/\/twitter\.com\/[A-Za-z0-9_]+\/status\/[0-9]+)(?!\?)' => '<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">(now loading...)<a href="$1?ref_src=twsrc%5Etfw">2018年3月34日</a></blockquote>' . "\n" . '<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>',
+	# <a>タグは別のルールにより置換される（っぽい）ため、ここでは置換不要
+	'(https:\/\/twitter\.com\/[A-Za-z0-9_]+\/status\/[0-9]+)(?!\?)' => 
+	  '<div align=center><blockquote class="twitter-tweet" data-lang="ja">'
+	  .'<p lang="ja" dir="ltr">$1</blockquote>'
+	  ."\n"
+	  .'<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>'
+	  .'</div>',
 );
 
 /////////////////////////////////////////////////

@@ -17,7 +17,7 @@ define('PLUGIN_TOPICPATH_TOP_DISPLAY', 1);
 define('PLUGIN_TOPICPATH_TOP_LABEL', 'Top');
 
 // Separetor / of / topic / path
-define('PLUGIN_TOPICPATH_TOP_SEPARATOR', ' / ');
+define('PLUGIN_TOPICPATH_TOP_SEPARATOR', ' &gt;&gt; ');
 
 // Show the page itself or not
 define('PLUGIN_TOPICPATH_THIS_PAGE_DISPLAY', 1);

@@ -307,7 +307,8 @@ EOD;
 		if (PKWK_ALLOW_RELATIVE_FOOTNOTE_ANCHOR) {
 			$script = '';
 		} else {
-			$script = get_script_uri() . '?' . pagename_urlencode($page);
+			//$script = get_script_uri() . '?' . pagename_urlencode($page);
+			$script = pagename_urlencode($page);
 		}
 
 		$id   = ++$note_id;
@@ -520,7 +521,8 @@ EOD;
 
 		$url = get_interwiki_url($name, $this->param);
 		$this->url = ($url === FALSE) ?
-			$script . '?' . pagename_urlencode('[[' . $name . ':' . $this->param . ']]') :
+			//$script . '?' . pagename_urlencode('[[' . $name . ':' . $this->param . ']]') :
+			pagename_urlencode('[[' . $name . ':' . $this->param . ']]') :
 			htmlsc($url);
 
 		return parent::setParam(
@@ -736,8 +738,14 @@ function make_pagelink($page, $alias = '', $anchor = '', $refer = '', $isautolin
 			$al_left = $al_right = '';
 		}
 
-		return $al_left . '<a ' . 'href="' . $script . '?' . $r_page . $anchor .
-			'"' . $title . '>' . $s_alias . '</a>' . $al_right;
+		#return $al_left . '<a ' . 'href="' . $script . '?' . $r_page . $anchor .
+		#	'"' . $title . '>' . $s_alias . '</a>' . $al_right;
+
+		#### edited. ####
+		$r_page = preg_replace("/%2F/", "/", $r_page);
+		return $al_left . '<a ' . 'href="/' . $r_page . '' . $anchor .
+		  '"' . $title . '>' . $s_alias . '</a>' . $al_right; 
+
 	} else {
 		// Dangling link
 		if (PKWK_READONLY) return $s_alias; // No dacorations

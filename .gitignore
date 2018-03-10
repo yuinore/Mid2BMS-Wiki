@@ -1,0 +1,10 @@
+_cp.sh
+# git update-index --skip-worktree pukiwiki.ini.php
+
+attach/
+backup/
+cache/
+diff/
+wiki/
+
+robots.txt

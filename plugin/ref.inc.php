@@ -297,6 +297,14 @@ function plugin_ref_body($args)
 				$params['_w'] = $matches[1];
 				$params['_h'] = $matches[2];
 
+			} else if (preg_match('/^([0-9]+)x$/', $arg, $matches)) {
+				//////////////////////
+				// edited. edited!!!
+				//////////////////////
+				$params['_size'] = TRUE;
+				$params['_w'] = $matches[1];
+				$params['_h'] = 'auto';
+
 			} else if (preg_match('/^([0-9.]+)%$/', $arg, $matches) && $matches[1] > 0) {
 				$params['_%'] = $matches[1];
 
