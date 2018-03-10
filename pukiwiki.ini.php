@@ -27,7 +27,7 @@ if (! defined('PKWK_READONLY'))
 
 // PKWK_SAFE_MODE - Prohibits some unsafe(but compatible) functions 
 if (! defined('PKWK_SAFE_MODE'))
-	define('PKWK_SAFE_MODE', 0);
+	define('PKWK_SAFE_MODE', 1);
 
 // PKWK_DISABLE_INLINE_IMAGE_FROM_URI - Disallow using inline-image-tag for URIs
 //   Inline-image-tag for URIs may allow leakage of Wiki readers' information
@@ -89,7 +89,7 @@ define('SKIN_DIR', 'skin/');
 // ./SKIN_DIR from index.php.
 
 // Static image files
-define('IMAGE_DIR', 'image/');
+define('IMAGE_DIR', '/image/');
 // Keep this directory shown via web browsers like
 // ./IMAGE_DIR from index.php.
 
@@ -155,7 +155,7 @@ define('PKWK_ALLOW_JAVASCRIPT', 0);
 
 /////////////////////////////////////////////////
 // _Disable_ WikiName auto-linking
-$nowikiname = 0;
+$nowikiname = 1;
 
 /////////////////////////////////////////////////
 // AutoLink feature
@@ -170,7 +170,7 @@ $function_freeze = 1;
 /////////////////////////////////////////////////
 // Allow to use 'Do not change timestamp' checkbox
 // (0:Disable, 1:For everyone,  2:Only for the administrator)
-$notimeupdate = 1;
+$notimeupdate = 0;
 
 /////////////////////////////////////////////////
 // Admin password for this Wikisite
