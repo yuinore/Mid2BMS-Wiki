@@ -375,6 +375,8 @@ EOD;
 
 	function set($arr, $page)
 	{
+		# $name is URL.
+		# $alias is 'alias name' (link string)
 		list(, , , $alias, $name) = $this->splice($arr);
 		return parent::setParam($page, htmlsc($name),
 			'', 'url', $alias == '' ? $name : $alias);
@@ -386,6 +388,34 @@ EOD;
 			$rel = '';
 		} else {
 			$rel = ' rel="nofollow"';
+		}
+
+		# embed check
+		$nico_pattern    = '/(?:https?):\/\/(?:www\.)?nicovideo\.jp\/watch\/([A-Za-z0-9_]+)/';
+		$youtube_pattern = '/(?:https?):\/\/(?:www\.)?youtube\.com\/watch\?v\=([A-Za-z0-9_]+)/';
+		$twitter_pattern = '/(?:https?):\/\/twitter\.com\/[A-Za-z0-9_]+\/status\/[0-9]+/';
+
+		if($this->alias === $this->name) {
+			# [[***>http://]] による埋め込みではない
+			$URL = $this->name;
+
+			if(preg_match($nico_pattern, $URL, $match_result)) {
+				$nico_id = $match_result[1];
+				return '<script type="application/javascript" '
+				  .'src="https://embed.nicovideo.jp/watch/'.$nico_id
+				  .'/script?w=640&amp;h=360"></script><noscript><a href='
+				  .'"http://www.nicovideo.jp/watch/'.$nico_id.'">'.$URL.'</a></noscript>';
+			}elseif(preg_match($youtube_pattern, $URL, $match_result)) {
+				$youtube_id = $match_result[1];
+				return '<div align=center><iframe width="560" height="315" src="http://www.youtube.com/embed/'.$youtube_id.'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
+			}elseif(preg_match($twitter_pattern, $URL)) {
+				return '<div align=center><blockquote class="twitter-tweet" data-lang="ja">'
+				  .'<a href="'.$URL.'">'.$URL.'</a>'
+				  .'</blockquote>'
+				  ."\n"
+				  .'<script async src="https://platform.twitter.com/widgets.js" charset="utf-8">'
+				  .'</script></div>';
+			}
 		}
 		return '<a href="' . $this->name . '"' . $rel . '>' . $this->alias . '</a>';
 	}
