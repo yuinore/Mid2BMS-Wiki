@@ -125,6 +125,7 @@ $line_rules = array(
 	  ."\n"
 	  .'<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>'
 	  .'</div>',
+	'(ttps:\/\/www.youtube.com\/watch\?v\=)([A-Za-z0-9_]+)(?!\?)' => '<div align=center><iframe width="560" height="315" src="http://www.youtube.com/embed/$2" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>',
 );
 
 /////////////////////////////////////////////////

@@ -92,6 +92,13 @@ if ($title == 'FrontPage') {
  <link rel="alternate" type="application/rss+xml" title="RSS" href="<?php echo $link['rss'] ?>" /><?php // RSS auto-discovery ?>
 
 <?php echo $head_tag ?>
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@yuinore" />
+<meta name="twitter:title" content="Mid2BMS Wiki" />
+<meta name="twitter:description" content="Mid2BMSの情報に関するWikiです。" />
+<meta name="twitter:image" content="http://wiki.mid2bms.net/image/mid2bms.png" />
+
 </head>
 <body>
 <div id="main_container">
