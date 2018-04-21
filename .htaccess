@@ -1,11 +1,14 @@
 # URL Rewrite
 RewriteEngine On
 
+RewriteCond %{QUERY_STRING} ^[^?&=+]+$
+RewriteRule ^$ 301.php [L]
+
 # 存在するファイル・フォルダはリライトしない
 RewriteCond %{REQUEST_FILENAME} !-d
-
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^FrontPage$ / [R,L]
+
 
 RewriteCond %{REQUEST_FILENAME} !-f
 # html ファイルを index2.php に書き換える

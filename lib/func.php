@@ -360,7 +360,7 @@ function page_list($pages, $cmd = 'read', $withfilename = FALSE)
 
 	// Shrink URI for read
 	if ($cmd == 'read') {
-		$href = $script . '?';
+		$href = $script . '';
 	} else {
 		$href = $script . '?cmd=' . $cmd . '&amp;page=';
 	}
